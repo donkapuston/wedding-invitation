@@ -18,12 +18,26 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://script.google.com/macros/s/AKfycbydjBN3m0s1UYJjYogywVA_hROp3gonpEgdSjmJby04uhnU3NQx523x6JMhd07gX_NT/exec', formData);
-      setSubmitted(true);
+      await axios.post(
+        'https://script.google.com/macros/s/AKfycbwWAqS_NbHBxsDL_QCXVh8uD2JpFCTYBbjDx3iL4u5xzLHAqJufX4168asbI-EdaTxd/exec',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      toast.success('Спасибо за подтверждение! ❤️', {
+        position: "top-right",
+        autoClose: 3000,
+      });
       setFormData({ name: '', guests: '1', drinks: '', comments: '' });
-      setTimeout(() => setSubmitted(false), 3000); // Скрыть сообщение через 3 сек
     } catch (error) {
       console.error('Ошибка:', error);
+      toast.error('Что-то пошло не так. Попробуйте снова.', {
+        position: "top-right",
+        autoClose: 3000,
+      });
     }
   };
 
