@@ -20,7 +20,7 @@ function App() {
     e.preventDefault();
     try {
       await axios.post(
-        'https://script.google.com/macros/s/AKfycbwR28_hNEP-h1ITKwlME6CyivOCF-1wENYH9eY9jrwoUJSaF9U5BWawTdkmi3KeZivS/exec',
+        'https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbwR28_hNEP-h1ITKwlME6CyivOCF-1wENYH9eY9jrwoUJSaF9U5BWawTdkmi3KeZivS/exec',
         formData,
         { headers: { 'Content-Type': 'application/json' } }
       );
