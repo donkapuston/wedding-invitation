@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 function App() {
@@ -9,7 +11,6 @@ function App() {
     drinks: '',
     comments: ''
   });
-  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,7 +20,7 @@ function App() {
     e.preventDefault();
     try {
       await axios.post(
-        'https://script.google.com/macros/s/AKfycbwWAqS_NbHBxsDL_QCXVh8uD2JpFCTYBbjDx3iL4u5xzLHAqJufX4168asbI-EdaTxd/exec',
+        'https://script.google.com/macros/s/AKfycbydjBN3m0s1UYJjYogywVA_hROp3gonpEgdSjmJby04uhnU3NQx523x6JMhd07gX_NT/exec',
         formData,
         {
           headers: {
@@ -44,8 +45,33 @@ function App() {
   return (
     <div className="container">
       <h1>Приглашение на нашу свадьбу!</h1>
-      <p>Дорогие друзья, ждем вас [дата] в [место]. Пожалуйста, заполните форму:</p>
-      
+      <p>Дорогие друзья, мы рады пригласить вас на наше торжество!</p>
+
+      <div className="info-section">
+        <div className="info-item">
+          <span className="icon">💍</span>
+          <div>
+            <h3>Регистрация в ЗАГСе</h3>
+            <p>15 мая 2025, 12:00<br />ул. Ленина, 10, ЗАГС Центрального района</p>
+          </div>
+        </div>
+        <div className="info-item">
+          <span className="icon">🥂</span>
+          <div>
+            <h3>Банкет</h3>
+            <p>15 мая 2025, 15:00<br />Ресторан "Золотой Лев", ул. Мира, 25</p>
+          </div>
+        </div>
+        <div className="info-item">
+          <span className="icon">👗</span>
+          <div>
+            <h3>Дресс-код</h3>
+            <p>Коктейльный стиль<br />Цвета: пастельные или классические</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Подтвердите ваше присутствие</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Ваше имя:</label>
         <input
@@ -93,7 +119,8 @@ function App() {
         <button type="submit">Принять приглашение</button>
       </form>
 
-      {submitted && <p className="success">Спасибо за ответ!</p>}
+      {/* Контейнер для уведомлений */}
+      <ToastContainer />
     </div>
   );
 }
