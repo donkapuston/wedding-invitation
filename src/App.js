@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
@@ -18,21 +17,30 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const form = new FormData();
+    form.append('name', formData.name);
+    form.append('guests', formData.guests);
+    form.append('drinks', formData.drinks);
+    form.append('comments', formData.comments);
+
     try {
-      await axios.post(
-        'https://wedding-proxy-9a0hkbetq-donkapustons-projects.vercel.app', // Замени на свой URL от Vercel
-        formData,
-        { headers: { 'Content-Type': 'application/json' } }
+      const response = await fetch(
+        'https://script.google.com/macros/s/AKfycbwR28_hNEP-h1ITKwlME6CyivOCF-1wENYH9eY9jrwoUJSaF9U5BWawTdkmi3KeZivS/exec',
+        {
+          method: 'POST',
+          body: form,
+          mode: 'no-cors' // Обход CORS
+        }
       );
       toast.success('Спасибо за подтверждение! ❤️', {
-        position: "top-right",
+        position: 'top-right',
         autoClose: 3000,
       });
       setFormData({ name: '', guests: '1', drinks: '', comments: '' });
     } catch (error) {
       console.error('Ошибка:', error);
       toast.error('Что-то пошло не так. Попробуйте снова.', {
-        position: "top-right",
+        position: 'top-right',
         autoClose: 3000,
       });
     }
@@ -48,14 +56,14 @@ function App() {
           <span className="icon">💍</span>
           <div>
             <h3>Регистрация в ЗАГСе</h3>
-            <p>15 мая 2025, 12:00<br />ул. Ленина, 10, ЗАГС Центрального района</p>
+            <p>5 июля 2025, 12:00<br />ул. Ленина, 10, ЗАГС Центрального района</p>
           </div>
         </div>
         <div className="info-item">
           <span className="icon">🥂</span>
           <div>
             <h3>Банкет</h3>
-            <p>15 мая 2025, 15:00<br />Ресторан "Золотой Лев", ул. Мира, 25</p>
+            <p>5 июля 2025, 15:00<br />Ресторан "Золотой Лев", ул. Мира, 25</p>
           </div>
         </div>
         <div className="info-item">
@@ -115,7 +123,6 @@ function App() {
         <button type="submit">Принять приглашение</button>
       </form>
 
-      {/* Контейнер для уведомлений */}
       <ToastContainer />
     </div>
   );
