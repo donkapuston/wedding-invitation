@@ -20,7 +20,7 @@ function App() {
     e.preventDefault();
     try {
       await axios.post(
-        'https://wedding-proxy-exau1x5mb-donkapustons-projects.vercel.app', // Замени на свой URL от Vercel
+        'https://wedding-proxy-9a0hkbetq-donkapustons-projects.vercel.app', // Замени на свой URL от Vercel
         formData,
         { headers: { 'Content-Type': 'application/json' } }
       );
