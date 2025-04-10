@@ -52,6 +52,15 @@ function App() {
       });
     }
   };
+  
+  useEffect(() => {
+    if (showFines) {
+      const finesSection = document.getElementById('fines');
+      if (finesSection) {
+        finesSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [showFines]);
 
   return (
     <div className="container">
