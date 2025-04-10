@@ -1,84 +1,205 @@
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f5e9e2;
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
+
+
+* {
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Playfair Display', serif;
+  color: #333;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
 }
 
 .container {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 500px;
-  width: 100%;
-  margin: 20px;
-}
-
-h1 {
-  color: #d14d72;
-  font-family: 'Georgia', serif;
-  margin-bottom: 10px;
-}
-
-p {
-  color: #555;
-  margin-bottom: 20px;
-}
-
-form {
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  text-align: center;
 }
 
-label {
-  font-weight: bold;
-  color: #333;
+.background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://img.freepik.com/free-vector/abstract-blue-watercolor-background_79603-2032.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  color: #1e3a8a; /* Тёмно-синий */
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #4b5e8a;
+  margin-bottom: 40px;
+}
+
+.form-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin: 40px 0 20px;
+}
+
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.info-item {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #1e3a8a;
+  margin-bottom: 5px;
+}
+
+.info-item p {
+  font-size: 0.9rem;
+  color: #4b5e8a;
+}
+
+.icon {
+  font-size: 2rem;
+}
+
+.wedding-form {
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.wedding-form label {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #1e3a8a;
+  margin-bottom: 5px;
   text-align: left;
 }
 
-input,
-select,
-textarea {
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
+.form-input {
   width: 100%;
-  box-sizing: border-box;
-  transition: border-color 0.3s;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: #d14d72;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(78, 129, 251, 0.3);
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #333;
   outline: none;
+  transition: border-color 0.3s ease;
 }
 
-button {
-  background-color: #d14d72;
+.form-input:focus {
+  border-color: #4e81fb;
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.submit-button {
+  background: #1e3a8a;
   color: white;
-  padding: 12px;
+  padding: 12px 30px;
   border: none;
-  border-radius: 8px;
+  border-radius: 15px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
+  transition: background 0.3s ease;
 }
 
-button:hover {
-  background-color: #b33c5e;
+.submit-button:hover {
+  background: #4e81fb;
 }
 
-.success {
-  color: #28a745;
-  margin-top: 15px;
-  font-weight: bold;
+/* Адаптивность */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .form-title {
+    font-size: 2rem;
+  }
+
+  .info-item {
+    max-width: 100%;
+  }
+
+  .wedding-form {
+    padding: 20px;
+  }
+
+  .form-input,
+  .submit-button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .icon {
+    margin-bottom: 10px;
+  }
 }
