@@ -32,15 +32,11 @@ function App() {
           mode: 'no-cors'
         }
       );
-      if (response.ok || response.redirected) {
-        toast.success('Спасибо за подтверждение! ❤️', {
-          position: 'top-right',
-          autoClose: 3000,
-        });
-        setFormData({ name: '', guests: '1', drinks: '', comments: '' });
-      } else {
-        throw new Error('Response not OK');
-      }
+      toast.success('Спасибо за подтверждение! ❤️', {
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      setFormData({ name: '', guests: '1', drinks: '', comments: '' });
     } catch (error) {
       console.error('Ошибка:', error);
       toast.error('Что-то пошло не так. Попробуйте снова.', {
