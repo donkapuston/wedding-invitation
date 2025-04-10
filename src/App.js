@@ -25,18 +25,22 @@ function App() {
 
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbwbKrPqatnEsCH7qhVwduK-jzm7BzaRv3yeGUTR-t16aHefUfJTEvuZYYCKttFZVx4Q/exec',
+        'https://script.google.com/macros/s/AKfycbwR28_hNEP-h1ITKwlME6CyivOCF-1wENYH9eY9jrwoUJSaF9U5BWawTdkmi3KeZivS/exec',
         {
           method: 'POST',
           body: form,
-          mode: 'no-cors' // Обход CORS
+          redirect: 'follow'
         }
       );
-      toast.success('Спасибо за подтверждение! ❤️', {
-        position: 'top-right',
-        autoClose: 3000,
-      });
-      setFormData({ name: '', guests: '1', drinks: '', comments: '' });
+      if (response.ok || response.redirected) {
+        toast.success('Спасибо за подтверждение! ❤️', {
+          position: 'top-right',
+          autoClose: 3000,
+        });
+        setFormData({ name: '', guests: '1', drinks: '', comments: '' });
+      } else {
+        throw new Error('Response not OK');
+      }
     } catch (error) {
       console.error('Ошибка:', error);
       toast.error('Что-то пошло не так. Попробуйте снова.', {
@@ -48,22 +52,23 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Приглашение на нашу свадьбу!</h1>
-      <p>Дорогие друзья, мы рады пригласить вас на наше торжество!</p>
+      <div className="background-overlay"></div>
+      <h1 className="title">Приглашение на нашу свадьбу!</h1>
+      <p className="subtitle">Дорогие друзья, мы рады пригласить вас на наше торжество!</p>
 
       <div className="info-section">
         <div className="info-item">
           <span className="icon">💍</span>
           <div>
             <h3>Регистрация в ЗАГСе</h3>
-            <p>5 июля 2025, 12:00<br />ул. Ленина, 10, ЗАГС Центрального района</p>
+            <p>5 июля 2025, 16:10<br />ул. Голодеда, 10, ЗАГС Заводского района</p>
           </div>
         </div>
         <div className="info-item">
           <span className="icon">🥂</span>
           <div>
             <h3>Банкет</h3>
-            <p>5 июля 2025, 15:00<br />Ресторан "Золотой Лев", ул. Мира, 25</p>
+            <p>5 июля 2025, 17:30<br />Ресторан "У дороги", ул. Выдуманная, 228</p>
           </div>
         </div>
         <div className="info-item">
@@ -75,8 +80,8 @@ function App() {
         </div>
       </div>
 
-      <h2>Подтвердите ваше присутствие</h2>
-      <form onSubmit={handleSubmit}>
+      <h2 className="form-title">Подтвердите ваше присутствие</h2>
+      <form onSubmit={handleSubmit} className="wedding-form">
         <label htmlFor="name">Ваше имя:</label>
         <input
           type="text"
@@ -85,6 +90,7 @@ function App() {
           value={formData.name}
           onChange={handleChange}
           required
+          className="form-input"
         />
 
         <label htmlFor="guests">Количество гостей:</label>
@@ -94,6 +100,7 @@ function App() {
           value={formData.guests}
           onChange={handleChange}
           required
+          className="form-input"
         >
           <option value="1">1</option>
           <option value="2">2</option>
@@ -109,6 +116,7 @@ function App() {
           value={formData.drinks}
           onChange={handleChange}
           placeholder="Например, вино, сок, вода"
+          className="form-input"
         />
 
         <label htmlFor="comments">Дополнительные пожелания:</label>
@@ -118,9 +126,10 @@ function App() {
           value={formData.comments}
           onChange={handleChange}
           placeholder="Ваши пожелания"
+          className="form-input form-textarea"
         />
 
-        <button type="submit">Принять приглашение</button>
+        <button type="submit" className="submit-button">Принять приглашение</button>
       </form>
 
       <ToastContainer />
