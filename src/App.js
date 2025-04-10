@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Добавляем useEffect
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-// Импортируем фото Марата Башарова (предполагается, что ты добавишь его в public)
-import maratImage from './marat-basharov.png'; // Укажи правильный путь после добавления
+// Импортируем фото Марата Башарова
+import maratImage from './marat-basharov.png'; // Укажи правильный путь
 
 function App() {
   const [formData, setFormData] = useState({
@@ -14,7 +14,7 @@ function App() {
     comments: ''
   });
 
-  const [showFines, SetShowFines] = useState(false);
+  const [showFines, setShowFines] = useState(false); // Исправляем SetShowFines на setShowFines
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,12 +29,12 @@ function App() {
     form.append('comments', formData.comments);
 
     try {
-      const response = await fetch(
+      await fetch(
         'https://script.google.com/macros/s/AKfycbwbKrPqatnEsCH7qhVwduK-jzm7BzaRv3yeGUTR-t16aHefUfJTEvuZYYCKttFZVx4Q/exec',
         {
           method: 'POST',
           body: form,
-          mode: 'no-cors'
+          mode: 'no-cors' // Оставляем no-cors, так как это работает для Google Apps Script
         }
       );
       toast.success('Спасибо за подтверждение! ❤️', {
@@ -42,8 +42,7 @@ function App() {
         autoClose: 3000,
       });
       setFormData({ name: '', guests: '1', drinks: '', comments: '' });
-      SetShowFines(true);
-      document.getElementById('fines').scrollIntoView( {behavior: 'smooth'});
+      setShowFines(true); // Исправляем SetShowFines на setShowFines
     } catch (error) {
       console.error('Ошибка:', error);
       toast.error('Что-то пошло не так. Попробуйте снова.', {
@@ -52,7 +51,8 @@ function App() {
       });
     }
   };
-  
+
+  // Прокрутка к секции штрафов после того, как showFines станет true
   useEffect(() => {
     if (showFines) {
       const finesSection = document.getElementById('fines');
@@ -119,7 +119,7 @@ function App() {
           <option value="3">3</option>
           <option value="4">4</option>
         </select>
-
+        
         <label htmlFor="drinks">Предпочтение по напиткам:</label>
         <input
           type="text"
@@ -142,37 +142,38 @@ function App() {
         />
 
         <button type="submit" className="submit-button">Принять приглашение</button>
-
-         {/* Секция со штрафами */}
-         {showFines && (
-      <div className="fines-section" id="fines">
-        <h2 className="fines-title">Штрафы за нарушение свадебных традиций</h2>
-        <ul className="fines-list">
-          <li>За крик "Горько!" на счёт 3 — <span className="fine-amount">5 рублей</span></li>
-          <li>За крик "Горько!" на счёт 5 — <span className="fine-amount">10 рублей</span></li>
-          <li>За опоздание на тост — <span className="fine-amount">15 рублей</span></li>
-          <li>За отказ танцевать с тёщей/свекровью — <span className="fine-amount">20 рублей</span></li>
-          <li>За попытку спрятать бутылку под стол — <span className="fine-amount">30 рублей</span></li>
-          <li>За крик "Мало!" после поцелуя — <span className="fine-amount">10 рублей</span></li>
-          <li>За попытку увести невесту на танец без разрешения жениха — <span className="fine-amount">50 рублей</span></li>
-          <li>За громкий храп во время тоста — <span className="fine-amount">40 рублей</span></li>
-          <li>За использование телефона во время конкурсов — <span className="fine-amount">15 рублей</span></li>
-          <li>За "случайное" падение в торт — <span className="fine-amount">100 рублей</span></li>
-          <li>За крик "А где мой подарок?— <span className="fine-amount">25 рублей</span></li>
-          <li>За попытку спеть песню без микрофона  — <span className="fine-amount">10 рублей</span></li>
-          <li>За пролитый бокал на платье невесты  — <span className="fine-amount">200 рублей</span></li>
-        </ul>
-      </div>
-      )}
-      {/* Надпись и фото Марата Башарова */}
-      {showFines && (
-      <div className="warning-section">
-        <p className="warning-text">Прибыть к назначенному времени, в назначенное место</p>
-        <img src={maratImage} alt="Марат Башаров" className="marat-image" />
-      </div>
-      )}
       </form>
-      
+
+      {/* Секция со штрафами (вне формы) */}
+      {showFines && (
+        <div className="fines-section" id="fines">
+          <h2 className="fines-title">Штрафы за нарушение свадебных традиций</h2>
+          <ul className="fines-list">
+            <li>За крик "Горько!" на счёт 3 — <span className="fine-amount">5 рублей</span></li>
+            <li>За крик "Горько!" на счёт 5 — <span className="fine-amount">10 рублей</span></li>
+            <li>За опоздание на тост — <span className="fine-amount">15 рублей</span></li>
+            <li>За отказ танцевать с тёщей/свекровью — <span className="fine-amount">20 рублей</span></li>
+            <li>За попытку спрятать бутылку под стол — <span className="fine-amount">30 рублей</span></li>
+            <li>За крик "Мало!" после поцелуя — <span className="fine-amount">10 рублей</span></li>
+            <li>За попытку увести невесту на танец без разрешения жениха — <span className="fine-amount">50 рублей</span></li>
+            <li>За громкий храп во время тоста — <span className="fine-amount">40 рублей</span></li>
+            <li>За использование телефона во время конкурсов — <span className="fine-amount">15 рублей</span></li>
+            <li>За "случайное" падение в торт — <span className="fine-amount">100 рублей</span></li>
+            <li>За крик "А где мой подарок?" — <span className="fine-amount">25 рублей</span></li>
+            <li>За попытку спеть песню без микрофона — <span className="fine-amount">10 рублей</span></li>
+            <li>За пролитый бокал на платье невесты — <span className="fine-amount">200 рублей</span></li>
+          </ul>
+        </div>
+      )}
+
+      {/* Надпись и фото Марата Башарова (вне формы) */}
+      {showFines && (
+        <div className="warning-section">
+          <p className="warning-text">Прибыть к назначенному времени, в назначенное место</p>
+          <img src={maratImage} alt="Марат Башаров" className="marat-image" />
+        </div>
+      )}
+
       <ToastContainer />
     </div>
   );
