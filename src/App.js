@@ -25,11 +25,11 @@ function App() {
 
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbwR28_hNEP-h1ITKwlME6CyivOCF-1wENYH9eY9jrwoUJSaF9U5BWawTdkmi3KeZivS/exec',
+        'https://script.google.com/macros/s/AKfycbwbKrPqatnEsCH7qhVwduK-jzm7BzaRv3yeGUTR-t16aHefUfJTEvuZYYCKttFZVx4Q/exec',
         {
           method: 'POST',
           body: form,
-          redirect: 'follow'
+          mode: 'no-cors'
         }
       );
       if (response.ok || response.redirected) {
@@ -61,7 +61,7 @@ function App() {
           <span className="icon">💍</span>
           <div>
             <h3>Регистрация в ЗАГСе</h3>
-            <p>5 июля 2025, 16:10<br />ул. Голодеда, 10, ЗАГС Заводского района</p>
+            <p>5 июля 2025, 16:10<br />ул. Голодеда, 21/1, ЗАГС Заводского района</p>
           </div>
         </div>
         <div className="info-item">
