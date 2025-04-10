@@ -3,6 +3,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
+// Импортируем фото Марата Башарова (предполагается, что ты добавишь его в public)
+import maratImage from './marat-basharov.png'; // Укажи правильный путь после добавления
+
 function App() {
   const [formData, setFormData] = useState({
     name: '',
@@ -64,7 +67,7 @@ function App() {
           <span className="icon">🥂</span>
           <div>
             <h3>Банкет</h3>
-            <p>5 июля 2025, 17:30<br />Ресторан "У дороги", ул. Выдуманная, 228</p>
+            <p>5 июля 2025, 15:00<br />Ресторан "Кайф", ул. Чилла, 228</p>
           </div>
         </div>
         <div className="info-item">
@@ -76,7 +79,25 @@ function App() {
         </div>
       </div>
 
-      <h2 className="form-title">Подтвердите ваше присутствие</h2>
+      {/* Секция со штрафами */}
+      <div className="fines-section">
+        <h2 className="fines-title">Штрафы за нарушение свадебных традиций</h2>
+        <ul className="fines-list">
+          <li>За крик "Горько!" на счёт 3 — <span className="fine-amount">5 рублей</span></li>
+          <li>За крик "Горько!" на счёт 5 — <span className="fine-amount">10 рублей</span></li>
+          <li>За опоздание на тост — <span className="fine-amount">15 рублей</span></li>
+          <li>За отказ танцевать с тёщей/свекровью — <span className="fine-amount">20 рублей</span></li>
+          <li>За попытку спрятать бутылку под стол — <span className="fine-amount">30 рублей</span></li>
+          <li>За крик "Мало!" после поцелуя — <span className="fine-amount">10 рублей</span></li>
+          <li>За уговоры "Ещё по одной!" после третьей — <span className="fine-amount">25 рублей</span></li>
+        </ul>
+      </div>
+
+      {/* Надпись и фото Марата Башарова */}
+      <div className="warning-section">
+        <p className="warning-text">Прибыть к назначенному времени, в назначенное место</p>
+        <img src={maratImage} alt="Марат Башаров" className="marat-image" />
+      </div><h2 className="form-title">Подтвердите ваше присутствие</h2>
       <form onSubmit={handleSubmit} className="wedding-form">
         <label htmlFor="name">Ваше имя:</label>
         <input

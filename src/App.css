@@ -203,3 +203,97 @@ body {
     margin-bottom: 10px;
   }
 }
+/* Секция со штрафами */
+.fines-section {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.fines-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+}
+
+.fines-list {
+  list-style: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #4b5e8a;
+}
+
+.fines-list li {
+  margin-bottom: 10px;
+}
+
+.fine-amount {
+  color: #d4af37; /* Золотой цвет для суммы штрафа */
+  font-weight: 700;
+}
+
+/* Секция с надписью и фото */
+.warning-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.warning-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+}
+
+.marat-image {
+  max-width: 200px;
+  opacity: 0.7; /* Прозрачность */
+  transition: opacity 0.3s ease;
+}
+
+.marat-image:hover {
+  opacity: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .fines-title {
+    font-size: 2rem;
+  }
+
+  .fines-list {
+    font-size: 0.9rem;
+  }
+
+  .warning-text {
+    font-size: 1rem;
+  }
+
+  .marat-image {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fines-title {
+    font-size: 1.8rem;
+  }
+
+  .fines-list {
+    font-size: 0.8rem;
+  }
+
+  .warning-text {
+    font-size: 0.9rem;
+  }
+
+  .marat-image {
+    max-width: 120px;
+  }
+}
