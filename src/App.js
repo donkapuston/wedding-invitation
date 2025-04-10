@@ -14,6 +14,8 @@ function App() {
     comments: ''
   });
 
+  const [showFines, SetShowFines] = useState(false);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
