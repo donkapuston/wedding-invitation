@@ -296,4 +296,8 @@ body {
   .marat-image {
     max-width: 120px;
   }
+
+  .fines-section{
+    scroll-margin-top: 80px;
+  }
 }

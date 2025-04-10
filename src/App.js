@@ -40,6 +40,7 @@ function App() {
         autoClose: 3000,
       });
       setFormData({ name: '', guests: '1', drinks: '', comments: '' });
+      document.getElementById('fines').scrollIntoView( {behavior: 'smooth'});
     } catch (error) {
       console.error('Ошибка:', error);
       toast.error('Что-то пошло не так. Попробуйте снова.', {
@@ -79,25 +80,7 @@ function App() {
         </div>
       </div>
 
-      {/* Секция со штрафами */}
-      <div className="fines-section">
-        <h2 className="fines-title">Штрафы за нарушение свадебных традиций</h2>
-        <ul className="fines-list">
-          <li>За крик "Горько!" на счёт 3 — <span className="fine-amount">5 рублей</span></li>
-          <li>За крик "Горько!" на счёт 5 — <span className="fine-amount">10 рублей</span></li>
-          <li>За опоздание на тост — <span className="fine-amount">15 рублей</span></li>
-          <li>За отказ танцевать с тёщей/свекровью — <span className="fine-amount">20 рублей</span></li>
-          <li>За попытку спрятать бутылку под стол — <span className="fine-amount">30 рублей</span></li>
-          <li>За крик "Мало!" после поцелуя — <span className="fine-amount">10 рублей</span></li>
-          <li>За уговоры "Ещё по одной!" после третьей — <span className="fine-amount">25 рублей</span></li>
-        </ul>
-      </div>
-
-      {/* Надпись и фото Марата Башарова */}
-      <div className="warning-section">
-        <p className="warning-text">Прибыть к назначенному времени, в назначенное место</p>
-        <img src={maratImage} alt="Марат Башаров" className="marat-image" />
-      </div><h2 className="form-title">Подтвердите ваше присутствие</h2>
+      <h2 className="form-title">Подтвердите ваше присутствие</h2>
       <form onSubmit={handleSubmit} className="wedding-form">
         <label htmlFor="name">Ваше имя:</label>
         <input
@@ -147,6 +130,32 @@ function App() {
         />
 
         <button type="submit" className="submit-button">Принять приглашение</button>
+
+         {/* Секция со штрафами */}
+      <div className="fines-section" id="fines">
+        <h2 className="fines-title">Штрафы за нарушение свадебных традиций</h2>
+        <ul className="fines-list">
+          <li>За крик "Горько!" на счёт 3 — <span className="fine-amount">5 рублей</span></li>
+          <li>За крик "Горько!" на счёт 5 — <span className="fine-amount">10 рублей</span></li>
+          <li>За опоздание на тост — <span className="fine-amount">15 рублей</span></li>
+          <li>За отказ танцевать с тёщей/свекровью — <span className="fine-amount">20 рублей</span></li>
+          <li>За попытку спрятать бутылку под стол — <span className="fine-amount">30 рублей</span></li>
+          <li>За крик "Мало!" после поцелуя — <span className="fine-amount">10 рублей</span></li>
+          <li>За попытку увести невесту на танец без разрешения жениха — <span className="fine-amount">50 рублей</span></li>
+          <li>За громкий храп во время тоста — <span className="fine-amount">40 рублей</span></li>
+          <li>За использование телефона во время конкурсов — <span className="fine-amount">15 рублей</span></li>
+          <li>За "случайное" падение в торт — <span className="fine-amount">100 рублей</span></li>
+          <li>За крик "А где мой подарок?— <span className="fine-amount">25 рублей</span></li>
+          <li>За попытку спеть песню без микрофона  — <span className="fine-amount">10 рублей</span></li>
+          <li>За пролитый бокал на платье невесты  — <span className="fine-amount">200 рублей</span></li>
+        </ul>
+      </div>
+
+      {/* Надпись и фото Марата Башарова */}
+      <div className="warning-section">
+        <p className="warning-text">Прибыть к назначенному времени, в назначенное место</p>
+        <img src={maratImage} alt="Марат Башаров" className="marat-image" />
+      </div>
       </form>
 
       <ToastContainer />
