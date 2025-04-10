@@ -40,6 +40,7 @@ function App() {
         autoClose: 3000,
       });
       setFormData({ name: '', guests: '1', drinks: '', comments: '' });
+      SetShowFines(true);
       document.getElementById('fines').scrollIntoView( {behavior: 'smooth'});
     } catch (error) {
       console.error('Ошибка:', error);
