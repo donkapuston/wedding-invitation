@@ -133,6 +133,7 @@ function App() {
         <button type="submit" className="submit-button">Принять приглашение</button>
 
          {/* Секция со штрафами */}
+         {showFines && (
       <div className="fines-section" id="fines">
         <h2 className="fines-title">Штрафы за нарушение свадебных традиций</h2>
         <ul className="fines-list">
@@ -151,14 +152,16 @@ function App() {
           <li>За пролитый бокал на платье невесты  — <span className="fine-amount">200 рублей</span></li>
         </ul>
       </div>
-
+      )}
       {/* Надпись и фото Марата Башарова */}
+      {showFines && (
       <div className="warning-section">
         <p className="warning-text">Прибыть к назначенному времени, в назначенное место</p>
         <img src={maratImage} alt="Марат Башаров" className="marat-image" />
       </div>
+      )}
       </form>
-
+      
       <ToastContainer />
     </div>
   );
