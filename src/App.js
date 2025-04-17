@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'; // Добавляем useEffect
+import React, { useState, useEffect } from 'react'; 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
-// Импортируем фото Марата Башарова
-import maratImage from './marat-basharov.png'; // Укажи правильный путь
+
+import maratImage from './marat-basharov.png'; 
 
 function App() {
   const [formData, setFormData] = useState({
@@ -14,7 +14,7 @@ function App() {
     comments: ''
   });
 
-  const [showFines, setShowFines] = useState(false); // Исправляем SetShowFines на setShowFines
+  const [showFines, setShowFines] = useState(false); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -42,7 +42,7 @@ function App() {
         autoClose: 3000,
       });
       setFormData({ name: '', guests: '1', drinks: '', comments: '' });
-      setShowFines(true); // Исправляем SetShowFines на setShowFines
+      setShowFines(true); 
     } catch (error) {
       console.error('Ошибка:', error);
       toast.error('Что-то пошло не так. Попробуйте снова.', {
@@ -52,7 +52,7 @@ function App() {
     }
   };
 
-  // Прокрутка к секции штрафов после того, как showFines станет true
+  
   useEffect(() => {
     if (showFines) {
       const finesSection = document.getElementById('fines');
@@ -84,12 +84,27 @@ function App() {
           </div>
         </div>
         <div className="info-item">
-          <span className="icon">👗</span>
+          <span className="icon">👔</span>
           <div>
-            <h3>Дресс-код</h3>
-            <p>Коктейльный стиль<br />Цвета: без сплошных белых и чёрных цветов</p>
+            <h3>Дресс-код для мужчин</h3>
+            <p>Коктейльный стиль<br />Костюм в классических или пастельных тонах, рубашка, без галстука</p>
           </div>
         </div>
+        <div className="info-item">
+          <span className="icon">👗</span>
+          <div>
+            <h3>Дресс-код для женщин</h3>
+            <p>Коктейльное платье<br />Пастельные или классические цвета, длина до колена или миди</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Секция с пожеланием вместо букетов */}
+      <div className="wishes-section">
+        <h2 className="wishes-title">Наше пожелание</h2>
+        <p className="wishes-text">
+          Дорогие гости, мы будем рады, если вместо букетов вы подарите нам бутылочку хорошего вина или книгу с тёплыми пожеланиями. Пусть ваши подарки станут частью нашей семейной истории! 🍷📖
+        </p>
       </div>
 
       <h2 className="form-title">Подтвердите ваше присутствие</h2>
@@ -137,7 +152,7 @@ function App() {
           name="comments"
           value={formData.comments}
           onChange={handleChange}
-          placeholder="Ваши пожелания"
+          placeholder="Ваши пожелания: наличие каких-либо аллергий и пр."
           className="form-input form-textarea"
         />
 
@@ -162,6 +177,7 @@ function App() {
             <li>За крик "А где мой подарок?" — <span className="fine-amount">25 рублей</span></li>
             <li>За попытку спеть песню без микрофона — <span className="fine-amount">10 рублей</span></li>
             <li>За пролитый бокал на платье невесты — <span className="fine-amount">200 рублей</span></li>
+            
           </ul>
         </div>
       )}

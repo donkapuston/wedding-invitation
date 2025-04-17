@@ -318,4 +318,70 @@ body {
     transform: translateY(0);
   }
 }
+
+@media (min-width: 768px) {
+  .info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .icon {
+    margin-bottom: 10px;
+  }
+}
+
+/* Секция с пожеланиями */
+.wishes-section {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.wishes-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 15px;
+}
+
+.wishes-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #4b5e8a;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .wishes-title {
+    font-size: 2rem;
+  }
+
+  .wishes-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .wishes-title {
+    font-size: 1.8rem;
+  }
+
+  .wishes-text {
+    font-size: 0.8rem;
+  }
+}
+
 }
