@@ -384,4 +384,17 @@ body {
   }
 }
 
+.info-item p {
+  font-size: 0.9rem;
+  color: #4b5e8a;
+  line-height: 1.4; /* Увеличиваем межстрочный интервал для читаемости */
+}
+
+/* На маленьких экранах уменьшаем шрифт ещё больше */
+@media (max-width: 480px) {
+  .info-item p {
+    font-size: 0.8rem;
+  }
+}
+
 }
