@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;700&display=swap');
 
-
 * {
   margin: 0;
   padding: 0;
@@ -41,7 +40,7 @@ body {
 .title {
   font-family: 'Great Vibes', cursive;
   font-size: 3.5rem;
-  color: #1e3a8a; /* Тёмно-синий */
+  color: #1e3a8a;
   margin-bottom: 10px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
@@ -90,6 +89,7 @@ body {
 .info-item p {
   font-size: 0.9rem;
   color: #4b5e8a;
+  line-height: 1.4;
 }
 
 .icon {
@@ -154,56 +154,31 @@ body {
   background: #4e81fb;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-  .title {
-    font-size: 2.5rem;
-  }
-
-  .subtitle {
-    font-size: 1rem;
-  }
-
-  .form-title {
-    font-size: 2rem;
-  }
-
-  .info-item {
-    max-width: 100%;
-  }
-
-  .wedding-form {
-    padding: 20px;
-  }
-
-  .form-input,
-  .submit-button {
-    font-size: 0.9rem;
-  }
+/* Секция с пожеланиями */
+.wishes-section {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-@media (max-width: 480px) {
-  .title {
-    font-size: 2rem;
-  }
-
-  .subtitle {
-    font-size: 0.9rem;
-  }
-
-  .form-title {
-    font-size: 1.8rem;
-  }
-
-  .info-item {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .icon {
-    margin-bottom: 10px;
-  }
+.wishes-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 15px;
 }
+
+.wishes-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #4b5e8a;
+}
+
 /* Секция со штрафами */
 .fines-section {
   background: rgba(255, 255, 255, 0.8);
@@ -234,7 +209,7 @@ body {
 }
 
 .fine-amount {
-  color: #d4af37; /* Золотой цвет для суммы штрафа */
+  color: #d4af37;
   font-weight: 700;
 }
 
@@ -254,7 +229,7 @@ body {
 
 .marat-image {
   max-width: 200px;
-  opacity: 0.7; /* Прозрачность */
+  opacity: 0.7;
   transition: opacity 0.3s ease;
 }
 
@@ -262,8 +237,80 @@ body {
   opacity: 1;
 }
 
+/* Анимация появления */
+.fines-section,
+.warning-section {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Адаптивность */
+@media (min-width: 768px) {
+  .info-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .wishes-section {
+    max-width: 800px;
+    padding: 40px;
+  }
+
+  .wishes-title {
+    font-size: 3rem;
+  }
+
+  .wishes-text {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .form-title {
+    font-size: 2rem;
+  }
+
+  .info-item {
+    max-width: 100%;
+  }
+
+  .wedding-form {
+    padding: 20px;
+  }
+
+  .form-input,
+  .submit-button {
+    font-size: 0.9rem;
+  }
+
+  .wishes-title {
+    font-size: 2rem;
+  }
+
+  .wishes-text {
+    font-size: 0.9rem;
+  }
+
   .fines-title {
     font-size: 2rem;
   }
@@ -282,6 +329,39 @@ body {
 }
 
 @media (max-width: 480px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+  }
+
+  .info-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .icon {
+    margin-bottom: 10px;
+  }
+
+  .info-item p {
+    font-size: 0.8rem;
+  }
+
+  .wishes-title {
+    font-size: 1.8rem;
+  }
+
+  .wishes-text {
+    font-size: 0.8rem;
+  }
+
   .fines-title {
     font-size: 1.8rem;
   }
@@ -298,125 +378,7 @@ body {
     max-width: 120px;
   }
 
-  .fines-section{
+  .fines-section {
     scroll-margin-top: 80px;
   }
-  /* Анимация появления */
-.fines-section,
-.warning-section {
-  opacity: 0;
-  animation: fadeIn 1s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@media (min-width: 768px) {
-  .info-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .info-item {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .icon {
-    margin-bottom: 10px;
-  }
-}
-
-/* Секция с пожеланиями */
-.wishes-section {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 20px;
-  padding: 30px;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto 40px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.wishes-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.5rem;
-  color: #1e3a8a;
-  margin-bottom: 15px;
-}
-
-.wishes-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: #4b5e8a;
-}
-
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-  .wishes-title {
-    font-size: 2rem;
-  }
-
-  .wishes-text {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .wishes-title {
-    font-size: 1.8rem;
-  }
-
-  .wishes-text {
-    font-size: 0.8rem;
-  }
-}
-
-.info-item p {
-  font-size: 0.9rem;
-  color: #4b5e8a;
-  line-height: 1.4; /* Увеличиваем межстрочный интервал для читаемости */
-}
-
-/* На маленьких экранах уменьшаем шрифт ещё больше */
-@media (max-width: 480px) {
-  .info-item p {
-    font-size: 0.8rem;
-  }
-}
-div.wishes-section {
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 20px;
-  padding: 30px;
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto 40px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-div.wishes-section .wishes-title {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.5rem;
-  color: #1e3a8a;
-  margin-bottom: 15px;
-}
-
-div.wishes-section .wishes-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1rem;
-  color: #4b5e8a;
-}
 }
