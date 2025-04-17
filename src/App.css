@@ -363,7 +363,7 @@ body {
   color: #4b5e8a;
 }
 
-/* Адаптивность */
+/* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
   .wishes-title {
     font-size: 2rem;
@@ -396,5 +396,27 @@ body {
     font-size: 0.8rem;
   }
 }
+div.wishes-section {
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
 
+div.wishes-section .wishes-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #1e3a8a;
+  margin-bottom: 15px;
+}
+
+div.wishes-section .wishes-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #4b5e8a;
+}
 }
