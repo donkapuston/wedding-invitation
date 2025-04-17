@@ -258,9 +258,17 @@ body {
 /* Адаптивность */
 @media (min-width: 768px) {
   .info-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex; /* Используем flex вместо grid */
+    flex-wrap: nowrap; /* Запрещаем перенос элементов */
     gap: 20px;
+    justify-content: space-between; /* Равномерно распределяем элементы */
+    overflow-x: auto; /* Если элементы не помещаются, добавляем горизонтальную прокрутку */
+  }
+
+  .info-item {
+    flex: 1; /* Каждый элемент занимает равное пространство */
+    min-width: 200px; /* Минимальная ширина, чтобы элементы не сжимались слишком сильно */
+    max-width: none; /* Убираем ограничение по максимальной ширине */
   }
 
   .wishes-section {
