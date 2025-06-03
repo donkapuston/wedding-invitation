@@ -32,7 +32,7 @@ function App() {
 
     try {
       await fetch(
-        'https://script.google.com/macros/s/AKfycbwbKrPqatnEsCH7qhVwduK-jzm7BzaRv3yeGUTR-t16aHefUfJTEvuZYYCKttFZVx4Q/exec',
+        'https://script.google.com/macros/s/AKfycbyuWQgNVQ3mFwQYLCo3F12NcLny-q_62kZMa4wpl6ISGCf279mDzu9eR-gFuM2zCuEw/exec',
         {
           method: 'POST',
           body: form,
