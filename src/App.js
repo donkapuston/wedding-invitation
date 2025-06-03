@@ -11,7 +11,8 @@ function App() {
     name: '',
     guests: '1',
     drinks: '',
-    comments: ''
+    comments: '',
+    attendingRegistration: 'Yes'
   });
 
   const [showFines, setShowFines] = useState(false); 
@@ -27,6 +28,7 @@ function App() {
     form.append('guests', formData.guests);
     form.append('drinks', formData.drinks);
     form.append('comments', formData.comments);
+    form.append('attendingRegistration', formData.attendingRegistration);
 
     try {
       await fetch(
@@ -41,7 +43,7 @@ function App() {
         position: 'top-right',
         autoClose: 3000,
       });
-      setFormData({ name: '', guests: '1', drinks: '', comments: '' });
+      setFormData({ name: '', guests: '1', drinks: '', comments: '' , attendingRegistration:'Yes'});
       setShowFines(true); 
     } catch (error) {
       console.error('Ошибка:', error);
@@ -135,6 +137,19 @@ function App() {
           <option value="4">4</option>
         </select>
 
+        <label htmlFor="attendingRegistration">Будете ли вы присутствовать на регистрации в ЗАГСе?</label>
+        <select
+          id="attendingRegistration"
+          name="attendingRegistration"
+          value={formData.attendingRegistration}
+          onChange={handleChange}
+          required
+          className="form-input"
+        >
+          <option value="Yes">Да</option>
+          <option value="No">Нет</option>
+        </select>
+
         <label htmlFor="drinks">Предпочтение по напиткам:</label>
         <input
           type="text"
@@ -152,7 +167,7 @@ function App() {
           name="comments"
           value={formData.comments}
           onChange={handleChange}
-          placeholder="Имена Ваших спутников, наличие каких-лиюо аллергий и пр."
+          placeholder="Имена Ваших спутников, наличие каких-либо аллергий и пр."
           className="form-input form-textarea"
         />
 
