@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/wedding-invitation/static/css/main.51f9bc03.css",
-    "main.js": "/wedding-invitation/static/js/main.e83f9e70.js",
+    "main.js": "/wedding-invitation/static/js/main.2540ac77.js",
     "static/media/marat-basharov.png": "/wedding-invitation/static/media/marat-basharov.1036ab5d46ef4bc52de6.png",
     "index.html": "/wedding-invitation/index.html",
     "main.51f9bc03.css.map": "/wedding-invitation/static/css/main.51f9bc03.css.map",
-    "main.e83f9e70.js.map": "/wedding-invitation/static/js/main.e83f9e70.js.map"
+    "main.2540ac77.js.map": "/wedding-invitation/static/js/main.2540ac77.js.map"
   },
   "entrypoints": [
     "static/css/main.51f9bc03.css",
-    "static/js/main.e83f9e70.js"
+    "static/js/main.2540ac77.js"
   ]
 }
