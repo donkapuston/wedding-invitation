@@ -146,13 +146,13 @@ function App() {
           className="form-input"
         />
 
-        <label htmlFor="comments">Дополнительные пожелания:</label>
+        <label htmlFor="comments">Дополнительные сведения о Вас:</label>
         <textarea
           id="comments"
           name="comments"
           value={formData.comments}
           onChange={handleChange}
-          placeholder="Ваши пожелания: наличие каких-либо аллергий и пр."
+          placeholder="Имена Ваших спутников, наличие каких-лиюо аллергий и пр."
           className="form-input form-textarea"
         />
 
